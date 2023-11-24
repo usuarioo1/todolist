@@ -57,6 +57,27 @@ export const App = () => {
     );
   };
 
+  const computedItemsLeft = todos.filter((todo) => !todo.completed).length;
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
+  };
+
+  const [filter, setFilter] = useState("all");
+  const filterTodos = () => {
+    switch (filter) {
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  };
+
+  const changeFilter = (filter) => setFilter(filter);
+
   return (
     <div className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen">
       <Header />
@@ -65,15 +86,21 @@ export const App = () => {
         <Todocreate createTodo={createTodo} />
 
         <TodoList
-          todos={todos}
+          todos={filterTodos()}
           removeTodo={removeTodo}
           updateTodo={updateTodo}
         />
 
-        <TodoComputer />
+        <TodoComputer
+          computedItemsLeft={computedItemsLeft}
+          clearCompleted={clearCompleted}
+        />
       </main>
 
-      <TodoFilter />
+      <TodoFilter
+        changeFilter={changeFilter}
+        filter={filter}
+      />
 
       <footer className="text-center mt-8">
         Drag and Drop to reorder list

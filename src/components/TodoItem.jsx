@@ -19,7 +19,10 @@ export const TodoItem = ({ todo, removeTodo, updateTodo }) => {
       <p className={`"text-gray-600 grow" ${completed && "line-through"}`}>
         {title}
       </p>
-      <button className="flex-none">
+      <button
+        className="flex-none"
+        onClick={() => removeTodo(id)}
+      >
         <CrossIcon />
       </button>
     </article>
