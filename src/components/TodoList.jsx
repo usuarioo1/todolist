@@ -2,7 +2,7 @@ import { TodoItem } from "./TodoItem";
 
 export const TodoList = ({ todos, removeTodo, updateTodo }) => {
   return (
-    <div className="bg-white rounded-t-md px-4 mt-8">
+    <div className="bg-white rounded-t-md px-4 mt-8 overflow-hidden  dark:bg-gray-800">
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}

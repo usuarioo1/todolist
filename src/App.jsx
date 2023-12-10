@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { TodoComputer } from "./components/TodoComputer";
 import { Todocreate } from "./components/TodoCreate";
@@ -34,8 +34,13 @@ const initialStateTodos = [
 ];
 
 export const App = () => {
-  const [todos, setTodos] = useState(initialStateTodos);
+  
+  
 
+  const [todos, setTodos] = useState(initialStateTodos);
+  useEffect(()=> {
+    localStorage.setItem('todos',JSON.stringify(todos));
+  },[todos])
   const createTodo = (title) => {
     const newTodo = {
       id: Date.now() + 1,
@@ -79,7 +84,7 @@ export const App = () => {
   const changeFilter = (filter) => setFilter(filter);
 
   return (
-    <div className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen">
+    <div className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen dark:bg-gray-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')]">
       <Header />
 
       <main className="container mx-auto px-4 mt">
@@ -102,7 +107,7 @@ export const App = () => {
         filter={filter}
       />
 
-      <footer className="text-center mt-8">
+      <footer className="text-center mt-8 dark:text-gray-400">
         Drag and Drop to reorder list
       </footer>
     </div>

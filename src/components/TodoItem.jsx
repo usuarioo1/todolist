@@ -5,7 +5,7 @@ export const TodoItem = ({ todo, removeTodo, updateTodo }) => {
   const { id, title, completed } = todo;
 
   return (
-    <article className="flex gap-4 px-4 py-4 border-b border-b-gray-400">
+    <article className="flex gap-4 px-4 py-4 border-b border-b-gray-400 dark:bg-gray-800 dark:text-gray-300">
       <button
         className={`${
           completed
@@ -16,7 +16,7 @@ export const TodoItem = ({ todo, removeTodo, updateTodo }) => {
       >
         <IconCheck />
       </button>
-      <p className={`"text-gray-600 grow" ${completed && "line-through"}`}>
+      <p className={`"text-gray-600 grow dark: text-gray-400" ${completed && "line-through"}`}>
         {title}
       </p>
       <button
