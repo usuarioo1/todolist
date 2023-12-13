@@ -5,34 +5,34 @@ import { Todocreate } from "./components/TodoCreate";
 import { TodoFilter } from "./components/TodoFilter";
 import { TodoList } from "./components/TodoList";
 
-const initialStateTodos = [
-  {
-    id: 1,
-    title: "anda al gym",
-    completed: true,
-  },
-  {
-    id: 2,
-    title: "anda a trabajar",
-    completed: false,
-  },
-  {
-    id: 3,
-    title: "pasea al perro",
-    completed: false,
-  },
-  {
-    id: 4,
-    title: "toma agua",
-    completed: false,
-  },
-  {
-    id: 5,
-    title: "cocinar",
-    completed: true,
-  },
-];
-
+// const initialStateTodos = [
+//   {
+//     id: 1,
+//     title: "anda al gym",
+//     completed: true,
+//   },
+//   {
+//     id: 2,
+//     title: "anda a trabajar",
+//     completed: false,
+//   },
+//   {
+//     id: 3,
+//     title: "pasea al perro",
+//     completed: false, 
+//   },
+//   {
+//     id: 4,
+//     title: "toma agua",
+//     completed: false,
+//   },
+//   {
+//     id: 5,
+//     title: "cocinar",
+//     completed: true,
+//   },
+// ];
+const initialStateTodos = JSON.parse(localStorage.getItem('todos')) || [];
 export const App = () => {
   
   
@@ -84,10 +84,10 @@ export const App = () => {
   const changeFilter = (filter) => setFilter(filter);
 
   return (
-    <div className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen dark:bg-gray-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')]">
+    <div className="bg-contain bg-no-repeat bg-[url('./assets/images/bg-mobile-light.jpg')] bg-gray-300 min-h-screen dark:bg-gray-900 dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] md:bg-[url('./assets/images/bg-desktop-light.jpg')] md:dark:bg-[url('./assets/images/bg-desktop-dark.jpg')]" >
       <Header />
 
-      <main className="container mx-auto px-4 mt">
+      <main className="container mx-auto px-4 mt md:max-w-xl">
         <Todocreate createTodo={createTodo} />
 
         <TodoList
